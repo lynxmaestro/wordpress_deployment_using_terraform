@@ -23,3 +23,37 @@ Terraform is a tool for building infrastructure with various technologies includ
   which terraform 
   /usr/bin/terraform
   ```
+## Lets create a file for declaring the variables.
+> Note: The terraform files must be created with .tf extension. 
+This is used to declare the variable and pass values to terraform source code.
+<pre> vim provider.tf </pre>
+
+## Declare the variables for initialising terraform (for terraform provider file )
+<pre>variable "project_name" {
+  default = "zomato"
+}
+variable "project_env" {
+  default = "prod"
+}
+variable "region" {
+  default = "ap-south-1"
+}
+variable "access_key" {
+  default = "*******"
+}
+variable "secret_key" {
+  default = "************"
+}
+</pre>
+
+## Create the provider file
+> Note : Terraform relies on plugins called "providers" to interact with remote systems. Terraform configurations must declare which providers they require, so that Terraform can install and use them. I'm using AWS as provider
+<pre>vim provider.tf</pre>
+<pre>
+provider "aws" {
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+}
+</pre>
+
