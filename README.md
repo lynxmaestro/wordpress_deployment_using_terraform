@@ -57,3 +57,24 @@ provider "aws" {
 }
 </pre>
 
+## Creating Amazon Virtual Private Cloud.
+> Amazon Virtual Private Cloud (VPC) lets you provision a logically isolated section of the Amazon Web Services (AWS) Cloud where you can launch AWS resources, such as Amazon EC2 instances, into a virtual network that you define. You have complete control over your virtual networking environment, including selecting your own IP address range, creating subnets, and configuring route tables and network gateways. A VPC is essentially your private, customizable slice of the AWS network.
+
+The main components of an Amazon VPC are:
+
+- Subnets
+: A subnet is a range of IP addresses within your VPC. You launch AWS resources into a specified subnet, which must reside within a single Availability Zone. Subnets can be configured as public (with a route to an Internet Gateway for internet access) or private (isolated from the internet for backend resources like databases). This segregation helps with security and architecture.
+
+- Route Tables
+: A route table contains a set of rules, called routes, that are used to determine where network traffic from a subnet or gateway is directed. Every subnet in your VPC must be associated with a route table. Routes dictate how traffic is forwarded within the VPC (e.g., between subnets) and to external destinations (e.g., the internet or a corporate network).
+
+- Internet Gateway (IGW)
+: An Internet Gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between your VPC and the internet. Attaching an IGW to your VPC and configuring routes in a subnet's route table makes that subnet a public subnet, enabling resources within it to connect to the internet.
+
+- Security Groups
+: A security group acts as a virtual firewall for your instance (at the instance level) to control inbound and outbound traffic. Security groups are stateful, meaning that if you allow inbound traffic, the response traffic is automatically allowed outbound, regardless of outbound rules.
+
+- Network Access Control Lists (Network ACLs)
+: A Network ACL acts as an optional, additional layer of security for your VPC that functions as a firewall for controlling traffic in and out of one or more subnets. Network ACLs are stateless, meaning that separate rules must be created to explicitly allow both inbound and outbound traffic. They support both allow and deny rules.
+
+
